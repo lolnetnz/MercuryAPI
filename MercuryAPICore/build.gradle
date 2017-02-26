@@ -1,0 +1,36 @@
+apply plugin: "java"
+
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+version = "0.0.1"
+group = "nz.co.lolnet.mercuryapi"
+archivesBaseName = "MercuryAPI"
+
+configurations {
+  provided {
+    compile.extendsFrom(provided)
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile "com.google.code.gson:gson:2.8.0"
+}
+
+jar {
+  manifest {
+    attributes "Main-Class": "nz.co.lolnet.mercuryapi.Main"
+  }
+  from {
+    (configurations.compile - configurations.provided).collect {
+	  it.isDirectory() ? it : zipTree(it)
+	}
+  }
+  from {
+    ["LICENSE"]
+  }
+}
