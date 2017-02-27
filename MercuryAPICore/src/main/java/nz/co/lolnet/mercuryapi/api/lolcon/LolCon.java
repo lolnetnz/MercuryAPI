@@ -13,28 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package nz.co.lolnet.mercuryapi.api.lolcon;
 
 import com.google.gson.Gson;
 
 import nz.co.lolnet.mercuryapi.api.API;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
 import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
 import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
 
 public class LolCon {
-	
-	private final API api;
-	
-	public LolCon(API api) {
-		this.api = api;
-	}
-	
-	public PlayerBalanceResponse getPlayerBalance(PlayerBalanceRequest playerBalanceRequest) {
-		return new Gson().fromJson(getAPI().request("lolcon/getplayerbalance", new Gson().toJson(playerBalanceRequest)), PlayerBalanceResponse.class);
-	}
-	
-	private API getAPI() {
-		return api;
-	}
+
+    private final API api;
+
+    public LolCon(API api) {
+        this.api = api;
+    }
+
+    public PlayerBalanceResponse getPlayerBalance(PlayerBalanceRequest playerBalanceRequest) {
+        return new Gson().fromJson(getAPI().request("lolcon/getplayerbalance", new Gson().toJson(playerBalanceRequest)), PlayerBalanceResponse.class);
+    }
+
+    public AddTempCommandResponse addTempCommand(AddTempCommandRequest addTempCommandRequest) {
+        return new Gson().fromJson(getAPI().request("lolcon/addtempcommand", new Gson().toJson(addTempCommandRequest)), AddTempCommandResponse.class);
+    }
+
+    private API getAPI() {
+        return api;
+    }
 }

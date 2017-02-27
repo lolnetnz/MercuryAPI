@@ -17,7 +17,9 @@
 package nz.co.lolnet.mercuryapi;
 
 import nz.co.lolnet.mercuryapi.api.API;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
 import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
 import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
 import nz.co.lolnet.mercuryapi.util.ConsoleOutput;
 
@@ -31,5 +33,8 @@ public class MercuryAPI {
 		
 		PlayerBalanceResponse response = api.getLolCon().getPlayerBalance(new PlayerBalanceRequest("LX_Gaming"));
 		ConsoleOutput.info(response.getPlayerName() + " - " + response.getPlayerBalance());
+                
+                AddTempCommandResponse response1 = api.getLolCon().addTempCommand(new AddTempCommandRequest("james137137", "testingTheAPI"));
+                ConsoleOutput.info("" + response1.getsuccess());
 	}
 }
