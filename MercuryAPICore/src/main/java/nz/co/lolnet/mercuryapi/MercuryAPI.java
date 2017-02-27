@@ -16,12 +16,8 @@
 package nz.co.lolnet.mercuryapi;
 
 import nz.co.lolnet.mercuryapi.api.API;
-import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
-import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerNameRequest;
-import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
-import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
-import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerNameResponse;
-import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.*;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.*;
 import nz.co.lolnet.mercuryapi.util.ConsoleOutput;
 
 public class MercuryAPI {
@@ -39,10 +35,13 @@ public class MercuryAPI {
             AddTempCommandResponse response1 = api.getLolCon().addTempCommand(new AddTempCommandRequest("james137137", "testingTheAPI"));
             ConsoleOutput.info("" + response1.getsuccess());
 
-        }
+            ChangePlayerNameResponse response2 = api.getLolCon().changePlayerName(new ChangePlayerNameRequest("James137137", "96513543-3da9-4ec4-8b29-31b542921da1"));
+            ConsoleOutput.info("" + response2.getsuccess());
 
-        ChangePlayerNameResponse response2 = api.getLolCon().changePlayerName(new ChangePlayerNameRequest("JamesTheAdmin", "96513543-3da9-4ec4-8b29-31b542921da1"));
-        ConsoleOutput.info("" + response2.getsuccess());
+            ChangePlayerUUIDResponse response3 = api.getLolCon().changePlayerUUID(new ChangePlayerUUIDRequest("James137137", "96513543-3da9-4ec4-8b29-31b542921da1"));
+            ConsoleOutput.info("" + response3.getsuccess());
+
+        }
 
     }
 }
