@@ -19,8 +19,10 @@ import com.google.gson.Gson;
 
 import nz.co.lolnet.mercuryapi.api.API;
 import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerNameRequest;
 import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
 import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerNameResponse;
 import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
 
 public class LolCon {
@@ -37,6 +39,10 @@ public class LolCon {
 
     public AddTempCommandResponse addTempCommand(AddTempCommandRequest addTempCommandRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/addtempcommand", new Gson().toJson(addTempCommandRequest)), AddTempCommandResponse.class);
+    }
+
+    public ChangePlayerNameResponse changePlayerName(ChangePlayerNameRequest changePlayerNameRequest) {
+        return new Gson().fromJson(getAPI().request("lolcon/changeplayername", new Gson().toJson(changePlayerNameRequest)), ChangePlayerNameResponse.class);
     }
 
     private API getAPI() {
