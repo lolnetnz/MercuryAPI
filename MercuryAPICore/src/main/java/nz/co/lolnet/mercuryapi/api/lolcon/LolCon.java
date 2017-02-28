@@ -44,6 +44,10 @@ public class LolCon {
     public ChangePlayerUUIDResponse changePlayerUUID(ChangePlayerUUIDRequest changePlayerUUIDRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/changeplayeruuid", new Gson().toJson(changePlayerUUIDRequest)), ChangePlayerUUIDResponse.class);
     }
+    
+    public ForumGroupsResponse getForumGroups(ForumGroupsRequest forumGroupsRequest) {
+        return new Gson().fromJson(getAPI().request("lolcon/getforumgroup", new Gson().toJson(forumGroupsRequest)), ForumGroupsResponse.class);
+    }
 
     private API getAPI() {
         return api;

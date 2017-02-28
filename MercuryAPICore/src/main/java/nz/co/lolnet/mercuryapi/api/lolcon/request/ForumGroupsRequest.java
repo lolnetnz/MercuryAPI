@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nz.co.lolnet.mercuryapi.api.lolcon.response;
+package nz.co.lolnet.mercuryapi.api.lolcon.request;
 
 /**
  *
  * @author James
  */
-public class ChangePlayerUUIDResponse {
+public class ForumGroupsRequest {
     
-    private boolean success;
 
-    public boolean getSuccess() {
-        return success;
+    public ForumGroupsRequest() {
     }
-
+    
+    
 }

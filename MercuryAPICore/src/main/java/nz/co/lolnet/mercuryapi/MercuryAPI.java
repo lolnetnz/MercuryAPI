@@ -22,8 +22,8 @@ import nz.co.lolnet.mercuryapi.util.ConsoleOutput;
 
 public class MercuryAPI {
 
-    private final String uniqueId = "";
-    private final String token = "";
+    private final String uniqueId = "TEST";
+    private final String token = "TOKEN";
 
     public void loadMercuryAPI() {
         API api = new API(uniqueId, token);
@@ -39,9 +39,12 @@ public class MercuryAPI {
             ConsoleOutput.info("" + response2.getsuccess());
 
             ChangePlayerUUIDResponse response3 = api.getLolCon().changePlayerUUID(new ChangePlayerUUIDRequest("James137137", "96513543-3da9-4ec4-8b29-31b542921da1"));
-            ConsoleOutput.info("" + response3.getsuccess());
+            ConsoleOutput.info("" + response3.getSuccess());
 
         }
+
+        ForumGroupsResponse response4 = api.getLolCon().getForumGroups(new ForumGroupsRequest());
+        ConsoleOutput.info(response4.getForumGroups().toString());
 
     }
 }
