@@ -5,7 +5,6 @@
  */
 package nz.co.lolnet.mercuryapi.api.lolcon.response;
 
-import com.google.gson.JsonArray;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,15 +13,20 @@ import java.util.List;
  * @author James
  */
 public class ForumGroupsResponse {
-
-    private JsonArray forumGroups;
-
-    public List<String> getForumGroups() {
-        List<String> forumGroupsList = new ArrayList<>();
-        for (int i = 0; i < this.forumGroups.size(); i++) {
-            forumGroupsList.add(this.forumGroups.get(i).getAsString());
+    
+    private String forumGroups;
+    
+    public List<Integer> getForumGroupsList() {
+        List<Integer> forumGroupsList = new ArrayList<>();
+        String[] split = this.forumGroups.split("~");
+        for (int i = 0; i < split.length; i++) {
+            forumGroupsList.add(Integer.parseInt(split[i]));
             
         }
         return forumGroupsList;
+    }
+    
+    public String getForumGroups() {
+        return forumGroups;
     }
 }
