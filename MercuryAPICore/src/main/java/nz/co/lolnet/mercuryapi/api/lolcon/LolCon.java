@@ -48,6 +48,12 @@ public class LolCon {
     public ForumGroupsResponse getForumGroups(ForumGroupsRequest forumGroupsRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/getforumgroup", new Gson().toJson(forumGroupsRequest)), ForumGroupsResponse.class);
     }
+    
+    
+    
+    public ForumUserForumGroupsResponse getForumUserForumGroups(ForumUserForumGroupsRequest forumUserForumGroupsRequest) {
+        return new Gson().fromJson(getAPI().request("lolcon/getforumuserforumgroups", new Gson().toJson(forumUserForumGroupsRequest)), ForumUserForumGroupsResponse.class);
+    }
 
     private API getAPI() {
         return api;
