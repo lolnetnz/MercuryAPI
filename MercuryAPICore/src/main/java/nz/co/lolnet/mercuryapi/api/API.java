@@ -54,6 +54,7 @@ public class API {
 			Data data = new Data(getUniqueId(), doEncrypt(message, getToken()));
 			
 			String request = Base64.getEncoder().encodeToString(new Gson().toJson(data).getBytes());
+			ConsoleOutput.info(request);
 			URLConnection urlConnection = new URL("http://api.lolnet.co.nz/v0.1/" + endpoint + "/" + request).openConnection();
 			urlConnection.setDoOutput(true);
 			urlConnection.setConnectTimeout(10000);

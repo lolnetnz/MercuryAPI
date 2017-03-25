@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package nz.co.lolnet.mercuryapi.api.lolcon;
 
 import com.google.gson.Gson;
@@ -28,15 +29,15 @@ public class LolCon {
     public LolCon(API api) {
         this.api = api;
     }
-
+    
     public PlayerBalanceResponse getPlayerBalance(PlayerBalanceRequest playerBalanceRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/getplayerbalance", new Gson().toJson(playerBalanceRequest)), PlayerBalanceResponse.class);
     }
-
+    
     public AddTempCommandResponse addTempCommand(AddTempCommandRequest addTempCommandRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/addtempcommand", new Gson().toJson(addTempCommandRequest)), AddTempCommandResponse.class);
     }
-
+    
     public ChangePlayerNameResponse changePlayerName(ChangePlayerNameRequest changePlayerNameRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/changeplayername", new Gson().toJson(changePlayerNameRequest)), ChangePlayerNameResponse.class);
     }
@@ -49,12 +50,10 @@ public class LolCon {
         return new Gson().fromJson(getAPI().request("lolcon/getforumgroup", new Gson().toJson(forumGroupsRequest)), ForumGroupsResponse.class);
     }
     
-    
-    
     public ForumUserForumGroupsResponse getForumUserForumGroups(ForumUserForumGroupsRequest forumUserForumGroupsRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/getforumuserforumgroups", new Gson().toJson(forumUserForumGroupsRequest)), ForumUserForumGroupsResponse.class);
     }
-
+    
     private API getAPI() {
         return api;
     }
