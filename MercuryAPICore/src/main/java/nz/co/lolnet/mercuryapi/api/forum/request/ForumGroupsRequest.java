@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.request;
+package nz.co.lolnet.mercuryapi.api.forum.request;
 
 public class ForumGroupsRequest {
 	

@@ -14,17 +14,26 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.request;
+package nz.co.lolnet.mercuryapi.api.forum.response;
 
-public class ForumUserForumGroupsRequest {
-	
-    private final int userForumID;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ForumGroupsResponse {
     
-    public ForumUserForumGroupsRequest(int userForumID) {
-        this.userForumID = userForumID;
+    private String forumGroups;
+    
+    public List<Integer> getForumGroupsList() {
+        List<Integer> forumGroupsList = new ArrayList<>();
+        String[] split = this.forumGroups.split("~");
+        for (int i = 0; i < split.length; i++) {
+            forumGroupsList.add(Integer.parseInt(split[i]));
+            
+        }
+        return forumGroupsList;
     }
     
-    public int getUserForumID() {
-        return userForumID;
+    public String getForumGroups() {
+        return forumGroups;
     }
 }

@@ -33,6 +33,7 @@ import javax.crypto.spec.SecretKeySpec;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 
+import nz.co.lolnet.mercuryapi.api.forum.Forum;
 import nz.co.lolnet.mercuryapi.api.lolcon.LolCon;
 import nz.co.lolnet.mercuryapi.entries.Data;
 import nz.co.lolnet.mercuryapi.util.ConsoleOutput;
@@ -42,11 +43,13 @@ public class API {
 	private final String uniqueId;
 	private final String token;
 	private final LolCon lolCon;
+	private final Forum forum;
 	
 	public API(String uniqueId, String token) {
 		this.uniqueId = uniqueId;
 		this.token = token;
 		lolCon = new LolCon(this);
+		forum = new Forum(this);
 	}
 	
 	public String request(String endpoint, String message) {
@@ -147,5 +150,9 @@ public class API {
 	
 	public LolCon getLolCon() {
 		return lolCon;
+	}
+	
+	public Forum getForum() {
+		return forum;
 	}
 }

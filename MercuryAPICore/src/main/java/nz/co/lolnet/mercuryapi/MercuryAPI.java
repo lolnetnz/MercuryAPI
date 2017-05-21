@@ -17,8 +17,18 @@
 package nz.co.lolnet.mercuryapi;
 
 import nz.co.lolnet.mercuryapi.api.API;
-import nz.co.lolnet.mercuryapi.api.lolcon.request.*;
-import nz.co.lolnet.mercuryapi.api.lolcon.response.*;
+import nz.co.lolnet.mercuryapi.api.forum.request.ForumGroupsRequest;
+import nz.co.lolnet.mercuryapi.api.forum.request.ForumUserForumGroupsRequest;
+import nz.co.lolnet.mercuryapi.api.forum.response.ForumGroupsResponse;
+import nz.co.lolnet.mercuryapi.api.forum.response.ForumUserForumGroupsResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerNameRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerUUIDRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerNameResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerUUIDResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
 import nz.co.lolnet.mercuryapi.util.ConsoleOutput;
 
 public class MercuryAPI {
@@ -44,10 +54,12 @@ public class MercuryAPI {
             ChangePlayerUUIDResponse response3 = api.getLolCon().changePlayerUUID(new ChangePlayerUUIDRequest("James137137", "96513543-3da9-4ec4-8b29-31b542921da1"));
             ConsoleOutput.info("" + response3.getSuccess());
             
-            ForumGroupsResponse response4 = api.getLolCon().getForumGroups(new ForumGroupsRequest());
+            ForumGroupsResponse response4 = api.getForum().getForumGroups(new ForumGroupsRequest());
             ConsoleOutput.info(response4.getForumGroupsList().toString());
         }
-        ForumUserForumGroupsResponse response5 = api.getLolCon().getForumUserForumGroups(new ForumUserForumGroupsRequest(415));
-        ConsoleOutput.info(response5.getForumGroupsList().toString());
+        ForumUserForumGroupsResponse response5 = api.getForum().getForumUserForumGroups(new ForumUserForumGroupsRequest(415));
+        for (Integer i : response5.getForumGroups()) {
+        	ConsoleOutput.info("" + i.intValue());
+        }
     }
 }

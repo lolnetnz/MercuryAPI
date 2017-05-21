@@ -19,8 +19,14 @@ package nz.co.lolnet.mercuryapi.api.lolcon;
 import com.google.gson.Gson;
 
 import nz.co.lolnet.mercuryapi.api.API;
-import nz.co.lolnet.mercuryapi.api.lolcon.request.*;
-import nz.co.lolnet.mercuryapi.api.lolcon.response.*;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.AddTempCommandRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerNameRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.ChangePlayerUUIDRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.request.PlayerBalanceRequest;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.AddTempCommandResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerNameResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.ChangePlayerUUIDResponse;
+import nz.co.lolnet.mercuryapi.api.lolcon.response.PlayerBalanceResponse;
 
 public class LolCon {
 
@@ -44,14 +50,6 @@ public class LolCon {
     
     public ChangePlayerUUIDResponse changePlayerUUID(ChangePlayerUUIDRequest changePlayerUUIDRequest) {
         return new Gson().fromJson(getAPI().request("lolcon/changeplayeruuid", new Gson().toJson(changePlayerUUIDRequest)), ChangePlayerUUIDResponse.class);
-    }
-    
-    public ForumGroupsResponse getForumGroups(ForumGroupsRequest forumGroupsRequest) {
-        return new Gson().fromJson(getAPI().request("lolcon/getforumgroup", new Gson().toJson(forumGroupsRequest)), ForumGroupsResponse.class);
-    }
-    
-    public ForumUserForumGroupsResponse getForumUserForumGroups(ForumUserForumGroupsRequest forumUserForumGroupsRequest) {
-        return new Gson().fromJson(getAPI().request("lolcon/getforumuserforumgroups", new Gson().toJson(forumUserForumGroupsRequest)), ForumUserForumGroupsResponse.class);
     }
     
     private API getAPI() {
