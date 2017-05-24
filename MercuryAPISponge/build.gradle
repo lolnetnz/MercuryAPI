@@ -1,0 +1,37 @@
+apply plugin: "java"
+
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+version = "0.0.1"
+group = "nz.co.lolnet.mercuryapi"
+archivesBaseName = "MercuryAPISponge"
+
+configurations {
+  provided {
+    compile.extendsFrom(provided)
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    url "http://repo.spongepowered.org/maven"
+  }
+}
+
+dependencies {
+  provided "org.spongepowered:spongeapi:5.2.0-SNAPSHOT"
+  compile fileTree(dir: "../MercuryAPICore/build/libs/", include: ["MercuryAPICore-*.jar"])
+}
+
+jar {
+  from {
+    (configurations.compile - configurations.provided).collect {
+	  it.isDirectory() ? it : zipTree(it)
+	}
+  }
+  from {
+    ["LICENSE"]
+  }
+}
