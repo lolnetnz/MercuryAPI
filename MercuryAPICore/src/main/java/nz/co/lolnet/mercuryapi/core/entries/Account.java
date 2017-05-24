@@ -14,31 +14,23 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.entries;
+package nz.co.lolnet.mercuryapi.core.entries;
 
-public class Data {
+public class Account {
 	
-	private String uniqueId;
-	private String message;
+	private final String uniqueId;
+	private final String token;
 	
-	public Data(String uniqueId) {
+	public Account(String uniqueId, String token) {
 		this.uniqueId = uniqueId;
-	}
-	
-	public Data(String uniqueId, String message) {
-		this.uniqueId = uniqueId;
-		this.message = message;
+		this.token = token;
 	}
 	
 	public String getUniqueId() {
 		return uniqueId;
 	}
 	
-	public String getMessage() {
-		return message;
-	}
-	
-	public void setMessage(String message) {
-		this.message = message;
+	public String getToken() {
+		return token;
 	}
 }

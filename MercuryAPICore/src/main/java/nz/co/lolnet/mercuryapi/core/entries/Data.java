@@ -14,10 +14,38 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.forum.request;
+package nz.co.lolnet.mercuryapi.core.entries;
 
-public class ForumGroupsRequest {
+import com.google.gson.annotations.Expose;
+
+public class Data {
 	
-    public ForumGroupsRequest() {
-    }
+	@Expose
+	private String uniqueId;
+	@Expose
+	private String message;
+	
+	public Data() {
+	}
+	
+	public Data(String uniqueId) {
+		this.uniqueId = uniqueId;
+	}
+	
+	public Data(String uniqueId, String message) {
+		this.uniqueId = uniqueId;
+		this.message = message;
+	}
+	
+	public String getUniqueId() {
+		return uniqueId;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
 }

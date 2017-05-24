@@ -14,23 +14,32 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.request;
+package nz.co.lolnet.mercuryapi.core.api.forum;
 
-public class AddTempCommandRequest {
+import java.util.List;
+
+import nz.co.lolnet.mercuryapi.core.api.API;
+import nz.co.lolnet.mercuryapi.core.entries.Account;
+
+public class GetForumGroups extends API {
 	
-    private final String playerName;
-    private final String packageName;
-    
-    public AddTempCommandRequest(String playerName, String packageName) {
-        this.playerName = playerName;
-        this.packageName = packageName;
-    }
-    
-    public String getPlayerName() {
-        return playerName;
-    }
-    
-    public String getPackageName() {
-        return packageName;
-    }
+	private List<Integer> forumGroups;
+	
+	public GetForumGroups(Account account) {
+		super(account);
+	}
+	
+	@Override
+	public GetForumGroups execute() {
+		return (GetForumGroups) super.get();
+	}
+	
+	@Override
+	public String getEndpoint() {
+		return "forum/getforumgroups";
+	}
+	
+	public List<Integer> getForumGroups() {
+		return forumGroups;
+	}
 }

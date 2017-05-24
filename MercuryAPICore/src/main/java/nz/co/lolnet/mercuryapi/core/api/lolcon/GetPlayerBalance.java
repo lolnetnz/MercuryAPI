@@ -14,18 +14,43 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.response;
+package nz.co.lolnet.mercuryapi.core.api.lolcon;
 
-public class PlayerBalanceResponse {
+import com.google.gson.annotations.Expose;
+
+import nz.co.lolnet.mercuryapi.core.api.API;
+import nz.co.lolnet.mercuryapi.core.entries.Account;
+
+public class GetPlayerBalance extends API {
 	
+	@Expose
 	private String playerName;
-	private String playerBalance;
+	private int playerBalance;
+	
+	public GetPlayerBalance(Account account) {
+		super(account);
+	}
+	
+	@Override
+	public GetPlayerBalance execute() {
+		return (GetPlayerBalance) super.get();
+	}
+	
+	@Override
+	public String getEndpoint() {
+		return "lolcon/getplayerbalance";
+	}
 	
 	public String getPlayerName() {
 		return playerName;
 	}
 	
-	public String getPlayerBalance() {
+	public GetPlayerBalance setPlayerName(String playerName) {
+		this.playerName = playerName;
+		return this;
+	}
+	
+	public int getPlayerBalance() {
 		return playerBalance;
 	}
 }

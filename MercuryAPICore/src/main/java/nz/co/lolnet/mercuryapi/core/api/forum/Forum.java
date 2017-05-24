@@ -14,13 +14,33 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.response;
+package nz.co.lolnet.mercuryapi.core.api.forum;
 
-public class ChangePlayerNameResponse {
+import nz.co.lolnet.mercuryapi.core.MercuryAPICore;
+
+public class Forum extends MercuryAPICore {
 	
-    private boolean success;
-    
-    public boolean getsuccess() {
-        return success;
-    }
+	/**
+	 * 
+	 * @return
+	 */
+	public GetForumGroups getForumGroups() {
+		return new GetForumGroups(getAccount());
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public GetForumUserForumGroups getForumUserForumGroups() {
+		return new GetForumUserForumGroups(getAccount());
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public GetForumUserIdFromDiscordId getForumUserIdFromDiscordId() {
+		return new GetForumUserIdFromDiscordId(getAccount());
+	}
 }

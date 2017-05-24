@@ -14,17 +14,34 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.api.lolcon.request;
+package nz.co.lolnet.mercuryapi.core.util;
 
-public class PlayerBalanceRequest {
+import java.lang.reflect.Type;
+
+import com.google.gson.InstanceCreator;
+
+import nz.co.lolnet.mercuryapi.core.api.API;
+
+public class TypeAdapter implements InstanceCreator<API> {
 	
-	private final String playerName;
+	private final API instance;
 	
-	public PlayerBalanceRequest(String playerName) {
-		this.playerName = playerName;
+	public TypeAdapter(API instance) {
+		this.instance = instance;
 	}
 	
-	public String getPlayerName() {
-		return playerName;
+	public API createInstance(Type type) {
+		if (getInstance() == null || type == null) {
+			return null;
+		}
+		
+		if (getInstance().getClass().getName().equals(type.getTypeName())) {
+			return getInstance();
+		}
+		return null;
+	}
+	
+	private API getInstance() {
+		return instance;
 	}
 }

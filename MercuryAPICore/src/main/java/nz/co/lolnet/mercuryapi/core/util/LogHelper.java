@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.mercuryapi.util;
+package nz.co.lolnet.mercuryapi.core.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ConsoleOutput {
+public class LogHelper {
 	
 	public static void info(String string) {
-		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Info] [Mercury]: " + string);
+		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Info] [" + Thread.currentThread().getName() + "]: " + string);
 	}
 	
 	public static void warn(String string) {
-		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Warn] [Mercury]: " + string);
+		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Warn] [" + Thread.currentThread().getName() + "]: " + string);
 	}
 	
 	public static void error(String string) {
-		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Error] [Mercury]: " + string);
+		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] [Error] [" + Thread.currentThread().getName() + "]: " + string);
 	}
 }
