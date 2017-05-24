@@ -1,0 +1,6 @@
+name: ${name}
+main: nz.co.lolnet.mercuryapi.bungee
+version: ${version}
+description: MercuryAPI.
+author: LolnetNZ
+website: https://www.lolnet.co.nz/
