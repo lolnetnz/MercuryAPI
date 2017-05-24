@@ -1,5 +1,5 @@
 name: ${name}
-main: nz.co.lolnet.mercuryapi.bukkit
+main: nz.co.lolnet.mercuryapi.bukkit.MercuryAPIBukkit
 version: ${version}
 description: MercuryAPI.
 author: LolnetNZ

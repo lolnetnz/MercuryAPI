@@ -30,10 +30,8 @@ jar {
     (configurations.compile - configurations.provided).collect {
 	  it.isDirectory() ? it : zipTree(it)
 	}
-	["LICENSE"]
   }
 }
-
 processResources {
   inputs.property "archivesBaseName", project.archivesBaseName
   inputs.property "version", project.version

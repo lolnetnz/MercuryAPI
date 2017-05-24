@@ -1,5 +1,5 @@
 name: ${name}
-main: nz.co.lolnet.mercuryapi.bungee
+main: nz.co.lolnet.mercuryapi.bungee.MercuryAPIBungee
 version: ${version}
 description: MercuryAPI.
 author: LolnetNZ
