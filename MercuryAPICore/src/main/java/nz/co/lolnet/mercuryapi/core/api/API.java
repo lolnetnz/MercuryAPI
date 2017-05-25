@@ -63,6 +63,7 @@ public abstract class API extends APIResponse {
 	
 	protected API get() {
 		try {
+			setCreationTime(System.currentTimeMillis());
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			Data data = new Data(getAccount().getUniqueId(), doEncrypt(gson.toJson(this, getClass()), getAccount().getToken()));
 			String request = Base64.getUrlEncoder().encodeToString(gson.toJson(data, Data.class).getBytes());
@@ -91,6 +92,7 @@ public abstract class API extends APIResponse {
 	
 	protected API post() {
 		try {
+			setCreationTime(System.currentTimeMillis());
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			Data data = new Data(getAccount().getUniqueId(), doEncrypt(gson.toJson(this, getClass()), getAccount().getToken()));
 			String request = Base64.getUrlEncoder().encodeToString(gson.toJson(data, Data.class).getBytes());

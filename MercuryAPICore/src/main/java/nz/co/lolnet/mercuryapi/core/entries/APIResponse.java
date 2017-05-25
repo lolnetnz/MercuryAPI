@@ -16,8 +16,12 @@
 
 package nz.co.lolnet.mercuryapi.core.entries;
 
+import com.google.gson.annotations.Expose;
+
 public abstract class APIResponse {
 	
+	@Expose
+	private long creationTime;
 	private String info;
 	private String infoMessage;
 	private String error;
@@ -72,6 +76,14 @@ public abstract class APIResponse {
 			return getErrorMessage();
 		}
 		return null;
+	}
+	
+	public long getCreationTime() {
+		return creationTime;
+	}
+	
+	public void setCreationTime(long creationTime) {
+		this.creationTime = creationTime;
 	}
 	
 	public String getInfo() {
