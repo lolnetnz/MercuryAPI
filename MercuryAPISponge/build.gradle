@@ -1,34 +1,61 @@
 apply plugin: "java"
 
+def signFile = "sign.gradle"
+if (file(signFile).exists()) {
+    apply from: signFile
+}
+
 targetCompatibility = 1.8
 sourceCompatibility = 1.8
 
-version = "0.0.1"
 group = "nz.co.lolnet.mercuryapi"
 archivesBaseName = "MercuryAPISponge"
+version = "0.0.1"
 
 configurations {
-  provided {
-    compile.extendsFrom(provided)
-  }
+    provided {
+        compile.extendsFrom(provided)
+    }
+
+    build {
+        if (project.tasks.findByName("signJar")) {
+            return finalizedBy(signJar)
+        }
+
+        return doLast {
+            println("========== [WARNING] ==========")
+            println()
+            println("   This build is not signed!   ")
+            println()
+            println("========== [WARNING] ==========")
+        }
+    }
 }
 
 repositories {
-  mavenCentral()
-  maven {
-    url "http://repo.spongepowered.org/maven"
-  }
+    mavenCentral()
+    maven {
+        url("http://repo.spongepowered.org/maven")
+    }
 }
 
 dependencies {
-  provided "org.spongepowered:spongeapi:5.2.0-SNAPSHOT"
-  compile fileTree(dir: "../MercuryAPICore/build/libs/", include: ["MercuryAPICore-*.jar"])
+    provided("org.spongepowered:spongeapi:5.2.0-SNAPSHOT")
+    compile(fileTree(dir: "../MercuryAPICore/build/libs/", include: ["MercuryAPICore-*.jar"]))
 }
 
 jar {
-  from {
-    (configurations.compile - configurations.provided).collect {
-	  it.isDirectory() ? it : zipTree(it)
-	}
-  }
+    from {
+        (configurations.compile - configurations.provided).collect {
+            if (it.isDirectory()) {
+                return it
+            }
+            return zipTree(it)
+        }
+    }
+}
+
+processResources {
+    from("LICENSE")
+    rename("LICENSE", "LICENSE-" + archivesBaseName)
 }
