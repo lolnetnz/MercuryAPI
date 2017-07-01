@@ -52,8 +52,15 @@ public class MercuryAPIBungee extends Plugin {
 		return instance;
 	}
 	
+	private Config getMercuryConfig() {
+		return config;
+	}
+	
 	private Configuration getConfiguration() {
-		return config.getConfiguration();
+		if (getMercuryConfig() != null) {
+			return getMercuryConfig().getConfiguration();
+		}
+		return null;
 	}
 	
 	public MercuryAPICore getMercuryAPICore() {

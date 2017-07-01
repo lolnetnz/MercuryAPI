@@ -33,7 +33,7 @@ public class Config {
 	private YamlConfiguration configuration;
 	
 	public void loadConfig() {
-		if (MercuryAPIBukkit.getInstance().getDataFolder().exists()) {
+		if (!MercuryAPIBukkit.getInstance().getDataFolder().exists()) {
 			MercuryAPIBukkit.getInstance().getDataFolder().mkdir();
 		}
 		
@@ -46,7 +46,7 @@ public class Config {
 			
 			if (!file.exists()) {
 				file.createNewFile();
-				InputStream inputStream = MercuryAPIBukkit.getInstance().getClass().getResourceAsStream(name);
+				InputStream inputStream = getClass().getResourceAsStream("/" + name);
 				OutputStream outputStream = new FileOutputStream(file);
 				ByteStreams.copy(inputStream, outputStream);
 				MercuryAPIBukkit.getInstance().getLogger().info("Successfully created " + name);

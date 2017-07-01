@@ -34,7 +34,7 @@ public class Config {
 	private Configuration configuration;
 	
 	public void loadConfig() {
-		if (MercuryAPIBungee.getInstance().getDataFolder().exists()) {
+		if (!MercuryAPIBungee.getInstance().getDataFolder().exists()) {
 			MercuryAPIBungee.getInstance().getDataFolder().mkdir();
 		}
 		
@@ -47,7 +47,7 @@ public class Config {
 			
 			if (!file.exists()) {
 				file.createNewFile();
-				InputStream inputStream = MercuryAPIBungee.getInstance().getClass().getResourceAsStream(name);
+				InputStream inputStream = getClass().getResourceAsStream("/" + name);
 				OutputStream outputStream = new FileOutputStream(file);
 				ByteStreams.copy(inputStream, outputStream);
 				MercuryAPIBungee.getInstance().getLogger().info("Successfully created " + name);

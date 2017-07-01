@@ -53,8 +53,15 @@ public class MercuryAPIBukkit extends JavaPlugin {
 		return instance;
 	}
 	
+	private Config getMercuryConfig() {
+		return config;
+	}
+	
 	public YamlConfiguration getConfiguration() {
-		return config.getConfiguration();
+		if (getMercuryConfig() != null) {
+			return getMercuryConfig().getConfiguration();
+		}
+		return null;
 	}
 	
 	public MercuryAPICore getMercuryAPICore() {

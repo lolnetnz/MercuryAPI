@@ -78,8 +78,15 @@ public class MercuryAPISponge {
 		return path;
 	}
 	
+	public Config getMercuryConfig() {
+		return config;
+	}
+	
 	public CommentedConfigurationNode getConfigurationNode() {
-		return config.getConfigurationNode();
+		if (getMercuryConfig() != null) {
+			return getMercuryConfig().getConfigurationNode();
+		}
+		return null;
 	}
 	
 	public MercuryAPICore getMercuryAPICore() {
